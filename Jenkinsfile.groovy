@@ -6,7 +6,8 @@ pipeline {
             steps {
                 script {
                     def logFile = "build_log.txt"
-                    sh "echo 'Starting the construction process. Let the magic begin!' | tee ${logFile}"
+                    bat "echo Starting the construction process. Let the magic begin! > ${logFile}" // For Windows
+                    // sh "echo 'Starting the construction process. Let the magic begin!' | tee ${logFile}" // For Unix/Linux
                 }
             }
         }
@@ -15,8 +16,10 @@ pipeline {
             steps {
                 script {
                     def logFile = "unit_integration_log.txt"
-                    sh "echo 'Using JUnit to carry out unit checks. Fingers crossed!' | tee ${logFile}"
-                    sh "echo 'Applying JUnit to integration tests. Hold tight!' | tee -a ${logFile}"
+                    bat "echo Using JUnit to carry out unit checks. Fingers crossed! > ${logFile}" // For Windows
+                    bat "echo Applying JUnit to integration tests. Hold tight! >> ${logFile}" // For Windows
+                    // sh "echo 'Using JUnit to carry out unit checks. Fingers crossed!' | tee ${logFile}" // For Unix/Linux
+                    // sh "echo 'Applying JUnit to integration tests. Hold tight!' | tee -a ${logFile}" // For Unix/Linux
                 }
             }
             post {
@@ -40,7 +43,8 @@ pipeline {
             steps {
                 script {
                     def logFile = "code_analysis_log.txt"
-                    sh "echo 'Analyzing code. Using SonarScanner to perform SonarQube analysis. Time to find those bugs!' | tee ${logFile}"
+                    bat "echo Analyzing code. Using SonarScanner to perform SonarQube analysis. Time to find those bugs! > ${logFile}" // For Windows
+                    // sh "echo 'Analyzing code. Using SonarScanner to perform SonarQube analysis. Time to find those bugs!' | tee ${logFile}" // For Unix/Linux
                 }
             }
         }
@@ -49,7 +53,8 @@ pipeline {
             steps {
                 script {
                     def logFile = "security_check_log.txt"
-                    sh "echo 'OWASP ZAP (Zed Attack Proxy) is used to conduct security audits. Let’s keep our app safe!' | tee ${logFile}"
+                    bat "echo OWASP ZAP (Zed Attack Proxy) is used to conduct security audits. Let’s keep our app safe! > ${logFile}" // For Windows
+                    // sh "echo 'OWASP ZAP (Zed Attack Proxy) is used to conduct security audits. Let’s keep our app safe!' | tee ${logFile}" // For Unix/Linux
                 }
             }
             post {
@@ -73,7 +78,8 @@ pipeline {
             steps {
                 script {
                     def logFile = "staging_deploy_log.txt"
-                    sh "echo 'Deploying the application to a staging environment (e.g., AWS EC2 instance). Almost there!' | tee ${logFile}"
+                    bat "echo Deploying the application to a staging environment (e.g., AWS EC2 instance). Almost there! > ${logFile}" // For Windows
+                    // sh "echo 'Deploying the application to a staging environment (e.g., AWS EC2 instance). Almost there!' | tee ${logFile}" // For Unix/Linux
                 }
             }
         }
@@ -82,7 +88,8 @@ pipeline {
             steps {
                 script {
                     def logFile = "staging_integration_log.txt"
-                    sh "echo 'Performing integration tests in the staging environment. Hang in there!' | tee ${logFile}"
+                    bat "echo Performing integration tests in the staging environment. Hang in there! > ${logFile}" // For Windows
+                    // sh "echo 'Performing integration tests in the staging environment. Hang in there!' | tee ${logFile}" // For Unix/Linux
                 }
             }
             post {
@@ -106,7 +113,8 @@ pipeline {
             steps {
                 script {
                     def logFile = "production_deploy_log.txt"
-                    sh "echo 'Deploying the application to a production environment (e.g., AWS EC2 instance). Almost live!' | tee ${logFile}"
+                    bat "echo Deploying the application to a production environment (e.g., AWS EC2 instance). Almost live! > ${logFile}" // For Windows
+                    // sh "echo 'Deploying the application to a production environment (e.g., AWS EC2 instance). Almost live!' | tee ${logFile}" // For Unix/Linux
                 }
             }
         }
@@ -115,7 +123,8 @@ pipeline {
             steps {
                 script {
                     def logFile = "commit_changes_log.txt"
-                    sh "echo 'Successfully committed changes. Great work team!' | tee ${logFile}"
+                    bat "echo Successfully committed changes. Great work team! > ${logFile}" // For Windows
+                    // sh "echo 'Successfully committed changes. Great work team!' | tee ${logFile}" // For Unix/Linux
                 }
             }
         }
